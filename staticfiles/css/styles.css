@@ -1,0 +1,18 @@
+.navbar {
+    display: flex;
+    background-color: #333;
+    /* align-items: center; */
+}
+
+.nav-links, .nav-links-sosmed {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    gap: 20px;
+}
+
+/* .nav-links ul, .nav-links-sosmed ul {
+    margin: 30px;
+    gap: 20px;
+} */

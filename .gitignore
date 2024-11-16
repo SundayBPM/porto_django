@@ -1,2 +1,14 @@
+# Python bytecode
+__pycache__/
+*.pyc
+*.pyo
+
 # Ignore Virtual Environment
 .venv/
+
+#Django specific
+db.sqlite3
+
+# Logs and temporary files
+*.log
+*.pot
