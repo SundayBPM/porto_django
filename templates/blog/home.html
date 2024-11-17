@@ -7,6 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sunday Portofolio</title>
     <link rel="stylesheet" href="{% static 'css/styles.css'%}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav class="navbar">
@@ -21,24 +24,32 @@
             <li><a href="#Contact">Contact</a></li>
         </ul>
         <ul class="nav-links-sosmed">
-            <li><a href="#Github">Github</a></li>
-            <li><a href="#Instagram">Instagram</a></li>
-            <li><a href="#LinkedIn">LinkedIn</a></li>
+            <li><a href="https://github.com/SundayBPM">
+                <img src="{% static 'img/github-142-svgrepo-com.svg' %}" alt="">
+            </a></li>
+            <li><a href="https://www.instagram.com/sunday_b.p.m/">
+                <img src="{% static 'img/instagram-167-svgrepo-com.svg' %}" alt="">
+            </a></li>
+            <li><a href="https://www.linkedin.com/in/sundaybpm">
+                <img src="{% static 'img/linkedin-round-svgrepo-com.svg' %}" alt="">
+            </a></li>
         </ul>
     </nav>
     <div class="profile">
-        <div class="intro">\
-            <h3>Hi 👋</h3>
+        <div class="intro">
+            <h3>Hi 👋,</h3>
             <h3>My name is</h3>
             <h3>Sunday B. Putera Mandiri</h3>
             <h3>DevOps intern at Metrocom Global Solusi</h3>
             <h3>Data and Business Analyst Enthusiast</h3>
         </div>
         <div class="profile-img">
-            <h3>
-                Ini gambar
-            </h3>
+            <img src="{% static 'img/foto-profil.jpg' %}" alt="Sunday's Picture"">
         </div>
+    </div>
+    <div class="tech-stack-intro">
+        <h3>My Tech Stack</h3>
+        <p>Technologies I've been working with recently</p>
     </div>
     <div class="tech-stack">
         <img src="{% static 'img/html-5-svgrepo-com.svg' %}" alt="html">
@@ -65,28 +76,17 @@
         <p>Things I've build so far</p>
     </div>
     <div class="projet-post">
-        <div class="post">
-            <div class="post-card">
-                <img src="" alt="">
-                <div class="post-preview">
-                    <h3>Tittle</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam excepturi autem accusantium architecto dolorem ipsum non quidem exercitationem voluptates iusto? Consectetur culpa quos voluptatibus libero qui quibusdam fugit voluptatem iste!</p>
-                    <a href="">link preview</a>
-                    <a href="">link github</a>
-                </div>
+        {% for x in "123456" %}
+        <div class="post-card">
+            <img src="{% static 'img/no-img.jpg' %}" alt="">
+            <div class="post-content">
+                <h3>Tittle</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam excepturi autem accusantium architecto dolorem ipsum non quidem exercitationem voluptates iusto? Consectetur culpa quos voluptatibus libero qui quibusdam fugit voluptatem iste!</p>
+                <a href="">link preview</a>
+                <a href="">link github</a>
             </div>
         </div>
-        <div class="post">
-            <div class="post-card">
-                <img src="" alt="">
-                <div class="post-preview">
-                    <h3>Tittle</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam excepturi autem accusantium architecto dolorem ipsum non quidem exercitationem voluptates iusto? Consectetur culpa quos voluptatibus libero qui quibusdam fugit voluptatem iste!</p>
-                    <a href="">link preview</a>
-                    <a href="">link github</a>
-                </div>
-            </div>
-        </div>
+        {% endfor %}
     </div>
 </body>
 </html>
