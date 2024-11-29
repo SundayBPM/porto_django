@@ -4,9 +4,10 @@ h3, p {
 body {
     background-color: #191919;
     font-family: 'Poppins';
+    padding-top: 150px;
 }
 /* =================== NAVBAR ===================*/
-.navbar {
+.navbar-custom {
     display: flex;
     background-color: rgba(25, 25, 25, 0.8); /* Transparansi 80% */
     justify-content: space-around;
@@ -19,7 +20,7 @@ body {
     padding-top: 5px;
 }
 
-.navbar a {
+.navbar-custom a {
     font-size: 20px;
     color: #A7A7A7;
     text-decoration: none;
@@ -43,13 +44,18 @@ body {
     color: white;
 }
 
+/* =================== custom class ===================*/
+.default-color {
+    background-color: #191919;
+}
+
 /* =================== PROFILE ===================*/
-.profile {
+/* .profile {
     display: flex;
     justify-content: space-around;
     margin: 0 5%;
     padding-top: 100px;
-}
+} */
 
 .intro h3 {
     font-family: 'Poppins';
@@ -69,9 +75,7 @@ body {
 .profile-img {
     display: flex;
     align-items: center;
-    /* border: 20px solid white;
-    border-radius: 50%; */
-
+    justify-content: center;
 }
 
 .profile-img img {
@@ -108,7 +112,7 @@ body {
     flex-wrap: wrap;
     gap: 10px;
     justify-content: space-around;
-    margin: 0 10%;
+    /* margin: 0 10%; */
 }
 
 .tech-stack img {
@@ -143,7 +147,7 @@ body {
     justify-content: space-evenly;
     flex-wrap: wrap;
     gap: 50px 20px;
-    margin: 0 9%;
+    /* margin: 0 9%; */
 }
 
 .post-card{
@@ -161,18 +165,28 @@ body {
 }
 
 .post-content {
-    padding: 15px;
+    padding: 5px 15px;
     width: 100%;
     height: 50%;
+    box-sizing: border-box;
 }
 
 .post-content h3 {
-    font-size: 20px;
+    font-size: 18px;
     color: white;
     margin: 0 0 10px;
 }
 
 .post-content p,a {
-    font-size: 16px;
+    font-size: 15px;
+    color: white;
+}
+
+.tech-stack-post {
+    display: flex;
+    height: auto;
+}
+.tech-stack-post p {
+    font-size: 12px;
     color: white;
 }

@@ -3,20 +3,27 @@ h3, p {
 }
 body {
     background-color: #191919;
+    font-family: 'Poppins';
+    padding-top: 150px;
 }
-
-.navbar {
+/* =================== NAVBAR ===================*/
+.navbar-custom {
     display: flex;
-    background-color: rgba(51, 51, 51, 0.1); /* Transparansi 80% */
+    background-color: rgba(25, 25, 25, 0.8); /* Transparansi 80% */
     justify-content: space-around;
     height: 50px;
-    width: auto;
+    width: 100%;
     align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-top: 5px;
 }
 
-.navbar a {
+.navbar-custom a {
     font-size: 20px;
     color: #A7A7A7;
+    text-decoration: none;
 }
 
 .nav-links, .nav-links-sosmed {
@@ -27,13 +34,77 @@ body {
     gap: 20px;
 }
 
-.profile {
-    display: flex;
-    justify-content: space-between;
+.nav-links-sosmed img {
+    width: 40px;
+    height: 40px;
 }
 
+.nav-links li:hover a {
+    background-color: rgba(25, 25, 25, 1.0);
+    color: white;
+}
+
+/* =================== custom class ===================*/
+.default-color {
+    background-color: #191919;
+}
+
+/* =================== PROFILE ===================*/
+/* .profile {
+    display: flex;
+    justify-content: space-around;
+    margin: 0 5%;
+    padding-top: 100px;
+} */
+
 .intro h3 {
+    font-family: 'Poppins';
     font-size: 38px;
+    margin: 25px 0 ;
+}
+
+.intro h3:nth-child(3) {
+    font-size: 38px;
+    margin: 25px 0;
+    background-image: linear-gradient(45deg, #E70FAA, #00C0FD); /* Gradien warna */
+    -webkit-background-clip: text; /* Untuk dukungan browser berbasis Webkit seperti Chrome */
+    background-clip: text; /* Untuk browser lain */
+    color: transparent; /* Membuat teks transparan untuk menunjukkan gradien */
+}
+
+.profile-img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-img img {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    border: 5px solid #E70FAA;
+    /* border: 5px solid transparent; */
+    /* border-image: linear-gradient(45deg, #E70FAA, #00C0FD) 1; */
+    object-fit: cover; 
+}
+
+
+
+/*=================== TECH STACK ICON ===================*/
+.tech-stack-intro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tech-stack-intro h3 {
+    margin: 6% 0 0;
+    font-size: 28px;
+}
+
+.tech-stack-intro p {
+    margin: 10px 0 3%;
+    font-size: 18px;
 }
 
 .tech-stack {
@@ -41,7 +112,7 @@ body {
     flex-wrap: wrap;
     gap: 10px;
     justify-content: space-around;
-    margin: 0 10%;
+    /* margin: 0 10%; */
 }
 
 .tech-stack img {
@@ -51,16 +122,71 @@ body {
     
 }
 
-.projet-post {
-    background-color: aliceblue;
+/* =================== PROJECT POST ===================*/
+
+.project-post-header {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.project-post-header h3{
+    margin: 7% 0 0;
+    font-size: 28px;
+}
+
+.project-post-header p{
+    margin: 10px 0 3%;
+    font-size: 18px;
+}
+
+.projet-post {
+    display: flex;
     justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 50px 20px;
+    /* margin: 0 9%; */
 }
 
 .post-card{
     width: 375px;
     height: 570px;
     background-color: #363636;
-    border-radius: 8px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.post-card img {
+    width: 100%;
+    height: 50%;
+    object-fit: cover;
+}
+
+.post-content {
+    padding: 5px 15px;
+    width: 100%;
+    height: 50%;
+    box-sizing: border-box;
+}
+
+.post-content h3 {
+    font-size: 18px;
+    color: white;
+    margin: 0 0 10px;
+}
+
+.post-content p,a {
+    font-size: 15px;
+    color: white;
+}
+
+.tech-stack-post {
+    display: flex;
+    height: auto;
+}
+.tech-stack-post p {
+    font-size: 12px;
+    color: white;
 }
