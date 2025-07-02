@@ -1,15 +1,3 @@
-Tentu, ini template README yang bisa kamu gunakan untuk proyek web kamu di GitHub. Saya telah menyertakan bagian-bagian umum yang relevan dan memberikan beberapa contoh placeholder yang bisa kamu sesuaikan.
-
------
-
-# Nama Proyek Kamu
-
-*Ganti URL gambar placeholder ini dengan banner proyekmu.*
-
-Sebuah deskripsi singkat dan menarik tentang proyek web kamu. Jelaskan apa itu, tujuan utamanya, dan masalah apa yang dipecahkannya.
-
------
-
 ## Instalasi
 
 Ikuti langkah-langkah di bawah ini untuk menjalankan proyek secara lokal di mesin kamu.
