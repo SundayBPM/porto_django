@@ -200,11 +200,26 @@ body {
 /* ==================================================================== */
 .download-button {
     margin-top: 10px;
-    background-color: #3F8E00;
     width: 250px;
     height: 50px;
     border-radius: 8px;
+
+    /* Ini yang diperlukan untuk latar belakang gradien pada kotak tombol */
+    background-image: linear-gradient(45deg, #E70FAA, #00C0FD); 
+    
+    /* Hapus baris-baris ini karena khusus untuk gradien teks */
+    /* -webkit-background-clip: text; */
+    /* background-clip: text; */
+    /* color: transparent; */ 
+    
+    /* Pastikan juga tidak ada background-color lain yang menimpa gradien ini */
+    /* background-color: #3F8E00; */ /* Hapus atau jadikan komentar */
+
+    /* Tambahkan border yang sesuai jika diperlukan */
+    border: 1px solid #c00f80; /* Contoh border yang cocok dengan gradien */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Opsional: bayangan */
 }
+
 
 .download-button a {
     display: flex; /* Ini WAJIB agar flexbox berfungsi */
@@ -234,7 +249,7 @@ body {
 }
 
 .download-button a:hover {
-    background-color: #2e6b00;
+    background-color: #00000044;
     border-radius: 8px;
 
 }
