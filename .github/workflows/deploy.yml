@@ -39,7 +39,7 @@ jobs:
           username: fufufafa
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            cd /var/www/myapp
+            cd /var/www/web_porto
             git pull origin main
 
 
