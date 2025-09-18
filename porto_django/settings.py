@@ -12,8 +12,6 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 from dotenv import load_dotenv
 from pathlib import Path
 import os
-from distutils.util import strtobool
-
 
 # choose env
 load_dotenv()
@@ -36,6 +34,9 @@ else:
     DEBUG = False
 
 ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS").split(",")
+
+CSRF_TRUSTED_ORIGINS = ["https://sunday-porto.my.id"]
+
 
 # Application definition
 
