@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 from dotenv import load_dotenv
 from pathlib import Path
 import os
+from distutils.util import strtobool
+
 
 # choose env
 load_dotenv()
@@ -28,6 +30,10 @@ SECRET_KEY = 'django-insecure-*yjr2lxi#@s)0@p(u8$u9ds27*4*2apie9^xg(yb$2%)uovgxu
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DEBUG")
+if DEBUG == "True":
+    DEBUG = True
+else:
+    DEBUG = False
 
 ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS").split(",")
 
@@ -80,10 +86,18 @@ WSGI_APPLICATION = 'porto_django.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': os.getenv("NAME_DB"),
+        'USER': os.getenv("USER"),
+        'PASSWORD': os.getenv("PASSWORD"),
+        'HOST': os.getenv("HOST"),
+        'PORT': '3306',
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"  # opsi tambahan supaya MySQL enforce integritas data
+        }
     }
 }
+
 
 
 # Password validation
