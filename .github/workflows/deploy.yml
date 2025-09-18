@@ -40,6 +40,7 @@ jobs:
             echo "[INFO] SSH key berhasil dibuat."
 
             echo "[INFO] Menghubungkan ke server..."
+            set -e
             ssh -o StrictHostKeyChecking=no -i /tmp/deploy_key fufufafa@100.69.0.69 "
               cd /var/www/web_porto && echo '[INFO] Berhasil masuk ke /var/www/web_porto'
               git fetch origin
