@@ -48,7 +48,6 @@ jobs:
               pip install gunicorn
               python manage.py makemigrations
               python manage.py migrate
-              python manage.py collectstatic --clear --noinput
               sudo systemctl restart web_porto
               "
 
