@@ -43,6 +43,13 @@ jobs:
             ssh -o StrictHostKeyChecking=no -i /tmp/deploy_key fufufafa@100.69.0.69 "
               cd /var/www/web_porto && echo '[INFO] Berhasil masuk ke /var/www/web_porto'
               git pull origin main
+              source .venv/bin/activate
+              pip install -r requirements.txt
+              pip install gunicorn
+              python manage.py makemigrations
+              python manage.py migrate
+              python manage.py collectstatic --noinput
+              sudo systemctl restart web_porto
               "
 
 
