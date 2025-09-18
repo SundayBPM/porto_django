@@ -33,14 +33,28 @@ jobs:
 
 
       - name: Deploy via SSH
-        uses: appleboy/ssh-action@v1.0.3
-        with:
-          host: 100.69.0.69 # Tailscale IP server
-          username: fufufafa
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: |
-            cd /var/www/web_porto
-            git pull origin main
+        env:
+          SSH_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        run: |
+            echo "$SSH_KEY" > /tmp/deploy_key && chmod 600 /tmp/deploy_key
+            echo "[INFO] SSH key berhasil dibuat."
+
+            echo "[INFO] Menghubungkan ke server..."
+            ssh -o StrictHostKeyChecking=no -i /tmp/deploy_key fufufafa@100.69.0.69 "
+              cd /var/www/web_porto && echo '[INFO] Berhasil masuk ke /var/www/web_porto'
+              "
+
+
+
+      # - name: Deploy via SSH
+      #   uses: appleboy/ssh-action@v1.0.3
+      #   with:
+      #     host: 100.69.0.69 # Tailscale IP server
+      #     username: fufufafa
+      #     key: ${{ secrets.SSH_PRIVATE_KEY }}
+      #     script: |
+      #       cd /var/www/web_porto
+      #       git pull origin main
 
 
 
