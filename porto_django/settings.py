@@ -152,7 +152,7 @@ LOGGING = {
         'file': {
             'level': 'ERROR',
             'class': 'logging.FileHandler',
-            'filename': '/home/ubuntu/django_error.log',
+            'filename': '/var/log/web_porto_error.log',
         },
     },
     'loggers': {
