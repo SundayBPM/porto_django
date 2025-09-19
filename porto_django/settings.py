@@ -152,7 +152,7 @@ LOGGING = {
         'file': {
             'level': 'ERROR',
             'class': 'logging.FileHandler',
-            'filename': '/var/log/web_porto_error.log',
+            'filename': os.getenv("LOG_PATH"),
         },
     },
     'loggers': {
