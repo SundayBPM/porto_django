@@ -8,19 +8,78 @@ on:
 jobs:
   deploy: 
     runs-on: ubuntu-latest
-    container:
-      image: node:20
+    # container:
+    #   image: node:20
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+      
+      - name: Connect to Tailscale
+        # uses: tailscale/github-action@v2
+        uses: tailscale/github-action@v3
         with:
-          node-version: 20
-      - run: npm cli
-      - run: npm run build
-      - name: Get SSH Key and Set permission
-        run: 
-          mkdir -p ~/.ssh
-          echo "${{ secrect.SSH_PRIVATE.KEY }}" > ~/.ssh/id_rsa && chmod 600 ~/.ssh/id_rsa
-      - name: Deploy using SCP
-        run: scp -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa -r ./dist/* ${{ secrect.SSH_USER }}@${{ secrect.SSH_HOST }}:~/node-app
-      - name: Restart Server
-        run: ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ${{ secrect.SSH_USER }}@${{ secrect.SSH_HOST }}"cd ~/node-app && npm install && pm2 restart"
+          authkey: ${{ secrets.TAILSCALE_AUTHKEY }}
+          # oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
+          # oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
+          tags: tag:ci
+
+      # - name: Do the deploy thing
+      #   run: |
+      #       ssh -o "StrictHostKeyChecking no" ironicbadger@ktz-cloud "
+      #         cd ${{ secrets.VPS_PROJET_PATH }}
+      #         git pull
+      #         docker-compose run pms-wiki build
+      #       "
+
+
+      - name: Deploy via SSH
+        env:
+          SSH_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        run: |
+            echo "$SSH_KEY" > /tmp/deploy_key && chmod 600 /tmp/deploy_key
+            echo "[INFO] SSH key berhasil dibuat."
+
+            echo "[INFO] Menghubungkan ke server..."
+            set -e
+            ssh -o StrictHostKeyChecking=no -i /tmp/deploy_key fufufafa@100.69.0.69 "
+              cd /var/www/web_porto && echo '[INFO] Berhasil masuk ke /var/www/web_porto'
+              git fetch origin
+              git checkout main
+              git reset --hard origin/main
+              source .venv/bin/activate
+              pip install -r requirements.txt
+              pip install gunicorn
+              python manage.py makemigrations
+              python manage.py migrate
+              python manage.py collectstatic --clear --noinput
+              sudo systemctl restart web_porto
+              "
+
+
+
+      # - name: Deploy via SSH
+      #   uses: appleboy/ssh-action@v1.0.3
+      #   with:
+      #     host: 100.69.0.69 # Tailscale IP server
+      #     username: fufufafa
+      #     key: ${{ secrets.SSH_PRIVATE_KEY }}
+      #     script: |
+      #       cd /var/www/web_porto
+      #       git pull origin main
+
+
+
+
+      # - uses: actions/checkout@v3
+      #   with:
+      #     node-version: 20
+      # - run: npm cli
+      # - run: npm run build
+      # - name: Get SSH Key and Set permission
+      #   run: 
+      #     mkdir -p ~/.ssh
+      #     echo "${{ secrect.SSH_PRIVATE.KEY }}" > ~/.ssh/id_rsa && chmod 600 ~/.ssh/id_rsa
+      # - name: Deploy using SCP
+      #   run: scp -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa -r ./dist/* ${{ secrect.SSH_USER }}@${{ secrect.SSH_HOST }}:~/node-app
+      # - name: Restart Server
+      #   run: ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ${{ secrect.SSH_USER }}@${{ secrect.SSH_HOST }}"cd ~/node-app && npm install && pm2 restart"

@@ -5,6 +5,7 @@ __pycache__/
 
 # Ignore Virtual Environment
 .venv/
+.env
 
 #Django specific
 db.sqlite3
